@@ -2,14 +2,25 @@ package com.example.pokemonapi.view.viewHolder
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokemonapi.databinding.PokemonRowBinding
-import com.example.pokemonapi.model.PokemonModel
+import com.example.pokemonapi.model.PokemonListModel
 
-class PokemonViewHolder(private val bind: PokemonRowBinding) : RecyclerView.ViewHolder(bind.root){
+class PokemonViewHolder(private val bind: PokemonRowBinding) :
+    RecyclerView.ViewHolder(bind.root) {
 
-    fun bind(pokemon: PokemonModel) {
+    fun bind(pokemon: PokemonListModel.PokemonListItem) {
 
-        bind.pokeNumber.text = pokemon.id.toString()
-        bind.pokeName.text = pokemon.name
-//        bind.pokeType.text = pokemon.type
+        val pokemonID = getPokemonID(pokemon.url)
+
+        bind.pokeNumber.text = "#" + pokemonID.padStart(3, '0')
+
+        bind.pokeName.text = pokemon.name.replaceFirstChar(Char::uppercase)
+
+        bind.pokeCard.setOnClickListener {
+            getPokemonID(pokemonID)
+        }
+    }
+
+    fun getPokemonID(url: String): String {
+        return url.split("/").takeLast(2).first()
     }
 }

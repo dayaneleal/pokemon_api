@@ -2,6 +2,7 @@ package com.example.pokemonapi.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokemonapi.databinding.ActivityMainBinding
@@ -17,17 +18,25 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        viewModel = ViewModelProvider(this).get(PokemonViewModel::class.java)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        viewModel = ViewModelProvider(this).get(PokemonViewModel::class.java)
 
         //LayoutManager
         binding.recyclerPokemon.layoutManager = LinearLayoutManager(this)
         //Adapter
         binding.recyclerPokemon.adapter = adapter
 
-        viewModel.getPokemon()
+        viewModel.getPokemonList()
 
-        setContentView(binding.root)
+        observe()
     }
+
+    private fun observe() {
+        viewModel.listPokemonsLiveData.observe(this)
+        {
+            adapter.updateList(it.results)
+        }
+    }
+
 }
