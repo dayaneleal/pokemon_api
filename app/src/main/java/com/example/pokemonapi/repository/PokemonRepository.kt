@@ -1,5 +1,6 @@
 package com.example.pokemonapi.repository
 
+import com.example.pokemonapi.model.PokemonDetailModel
 import com.example.pokemonapi.model.PokemonListModel
 import com.example.pokemonapi.repository.remote.PokemonService
 import com.example.pokemonapi.repository.remote.RetrofitClient
@@ -35,5 +36,26 @@ class PokemonRepository {
         })
     }
 
+    fun getPokemonDetail(id: Int, onSuccess: (PokemonDetailModel) -> Unit, onError: (String) -> Unit) {
+        val call = service.getPokemonDetail(id)
 
+        call.enqueue(object : Callback<PokemonDetailModel> {
+            override fun onResponse(
+                call: Call<PokemonDetailModel>,
+                response: Response<PokemonDetailModel>
+            ) {
+                if (response.code() == 200) {
+                    response.body()?.let {
+                        onSuccess(it)
+                    }
+                } else {
+                    onError(response.errorBody()?.string() ?: "Error: Body vazio.")
+                }
+            }
+
+            override fun onFailure(call: Call<PokemonDetailModel>, t: Throwable) {
+                onError("Erro inesperado: ${t.message}")
+            }
+        })
+    }
 }

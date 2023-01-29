@@ -13,4 +13,5 @@ interface PokemonService {
 
     @GET("pokemon/{id}")
     fun getPokemonDetail(@Path("id") id: Int): Call<PokemonDetailModel>
+
 }

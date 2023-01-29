@@ -1,5 +1,6 @@
 package com.example.pokemonapi.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -13,8 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: PokemonViewModel
     private lateinit var binding: ActivityMainBinding
-    private val adapter = PokemonAdapter()
-
+    private val adapter = PokemonAdapter(::onPokemonItemClick)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +37,12 @@ class MainActivity : AppCompatActivity() {
         {
             adapter.updateList(it.results)
         }
+    }
+
+    private fun onPokemonItemClick(id: Int) {
+        var intent = Intent(this, PokemonDetailActivity::class.java)
+        intent.putExtra("pokemonId", id)
+        startActivity(intent)
     }
 
 }

@@ -7,13 +7,13 @@ import com.example.pokemonapi.databinding.PokemonRowBinding
 import com.example.pokemonapi.model.PokemonListModel
 import com.example.pokemonapi.view.viewHolder.PokemonViewHolder
 
-class PokemonAdapter(): RecyclerView.Adapter<PokemonViewHolder>() {
+class PokemonAdapter(val onPokemonItemClick:(id: Int) -> Unit): RecyclerView.Adapter<PokemonViewHolder>() {
 
     private var pokemonList: List<PokemonListModel.PokemonListItem> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder {
         val pokemon = PokemonRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return PokemonViewHolder(pokemon)
+        return PokemonViewHolder(pokemon, onPokemonItemClick)
     }
 
     override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {

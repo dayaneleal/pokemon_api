@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="grass">#4CAF50</color>
+    <color name="bug">#8BC34A</color>
+    <color name="fire">#FF5722</color>
+    <color name="water">#03A9F4</color>
+    <color name="normal">#CFB669</color>
+    <color name="poison">#9C27B0</color>
+    <color name="eletric">#FBE523</color>
+    <color name="flying">#88B3B8</color>
+    <color name="other">#818181</color>
+
+
 </resources>

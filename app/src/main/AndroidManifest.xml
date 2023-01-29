@@ -15,6 +15,14 @@
         android:theme="@style/Theme.PokemonAPI"
         tools:targetApi="31">
         <activity
+            android:name=".view.PokemonDetailActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.ActionBar.Transparent">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
