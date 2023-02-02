@@ -3,6 +3,7 @@ package com.example.pokemonapi.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,11 +37,12 @@ class MainActivity : AppCompatActivity() {
         viewModel.listPokemonsLiveData.observe(this)
         {
             adapter.updateList(it.results)
+            binding.progressBar.visibility = View.GONE
         }
     }
 
     private fun onPokemonItemClick(id: Int) {
-        var intent = Intent(this, PokemonDetailActivity::class.java)
+        val intent = Intent(this, PokemonDetailActivity::class.java)
         intent.putExtra("pokemonId", id)
         startActivity(intent)
     }

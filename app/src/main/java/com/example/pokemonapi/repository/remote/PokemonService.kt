@@ -11,7 +11,7 @@ interface PokemonService {
     @GET("pokemon")
     fun getPokemonList(): Call<PokemonListModel>
 
-    @GET("pokemon/{id}")
+    @GET("pokexmon/{id}")
     fun getPokemonDetail(@Path("id") id: Int): Call<PokemonDetailModel>
 
 }

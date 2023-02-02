@@ -21,7 +21,7 @@ class PokemonViewHolder(private val bind: PokemonRowBinding, val onPokemonItemCl
         }
     }
 
-    fun getPokemonID(url: String): String {
+    private fun getPokemonID(url: String): String {
         return url.split("/").takeLast(2).first()
     }
 }

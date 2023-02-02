@@ -16,22 +16,13 @@ class PokemonViewModel(application: Application) : AndroidViewModel(application)
     private val _listPokemonsLiveData = MutableLiveData<PokemonListModel>()
     val listPokemonsLiveData: LiveData<PokemonListModel> = _listPokemonsLiveData
 
-    private val _pokemonDetailLiveData = MutableLiveData<PokemonDetailModel>()
-    val pokemonDetailLiveData: LiveData<PokemonDetailModel> = _pokemonDetailLiveData
-
     fun getPokemonList() {
         pokemonRepository.getPokemonList(onSuccess = {
             _listPokemonsLiveData.value = it
+
         }, onError = {
             Log.d("Debug", it)
         })
     }
 
-    fun getPokemonDetail(id: Int) {
-        pokemonRepository.getPokemonDetail(id, onSuccess = {
-            _pokemonDetailLiveData.value = it
-        }, onError = {
-            Log.d("Debug", it)
-        })
-    }
  }

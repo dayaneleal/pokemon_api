@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/estudos/Android/pokemon_api/app/src/main/res/drawable/wave.xml" value="0.1295" />
         <entry key="..\:/estudos/Android/pokemon_api/app/src/main/res/layout/activity_main.xml" value="0.16168478260869565" />
+        <entry key="..\:/estudos/Android/pokemon_api/app/src/main/res/layout/activity_pokemon_detail.xml" value="0.22" />
         <entry key="..\:/estudos/Android/pokemon_api/app/src/main/res/layout/pokemon_row.xml" value="0.36302083333333335" />
+        <entry key="..\:/estudos/Android/pokemon_api/app/src/main/res/layout/pokemon_type.xml" value="0.2545289855072464" />
       </map>
     </option>
   </component>
