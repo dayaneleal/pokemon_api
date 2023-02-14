@@ -1,61 +1,38 @@
 package com.example.pokemonapi.repository
 
+import android.content.Context
 import com.example.pokemonapi.model.PokemonDetailModel
 import com.example.pokemonapi.model.PokemonListModel
 import com.example.pokemonapi.repository.remote.PokemonService
 import com.example.pokemonapi.repository.remote.RetrofitClient
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PokemonRepository {
+class PokemonRepository(context: Context) : BaseRepository(context) {
 
     private val service = RetrofitClient.getService(PokemonService::class.java)
 
-    fun getPokemonList(onSuccess: (PokemonListModel) -> Unit, onError: (String) -> Unit) {
-        val call = service.getPokemonList()
+//    fun getPokemonList(onSuccess: (PokemonListModel) -> Unit, onError: (String) -> Unit) {
+//        executeCall(service.getPokemonList(), onSuccess, onError)
+//    }
 
-        call.enqueue(object : Callback<PokemonListModel> {
-            override fun onResponse(
-                call: Call<PokemonListModel>,
-                response: Response<PokemonListModel>
-            ) {
-                if (response.code() == 200) {
-                    response.body()?.let {
-                        onSuccess(it)
-                    }
-                } else {
-                    onError(response.errorBody()?.string() ?: "Error: Body vazio.")
-                }
-            }
-
-            override fun onFailure(call: Call<PokemonListModel>, t: Throwable) {
-                onError("Erro inesperado: ${t.message}")
-            }
-
-        })
+    suspend fun getPokemonList(): PokemonListModel {
+        return withContext(Dispatchers.IO) {
+            service.getPokemonList()
+        }
     }
 
-    fun getPokemonDetail(id: Int, onSuccess: (PokemonDetailModel) -> Unit, onError: (String) -> Unit) {
-        val call = service.getPokemonDetail(id)
+//   fun getPokemonDetail(id: Int, onSuccess: (PokemonDetailModel) -> Unit, onError: (String) -> Unit) {
+//        executeCall(service.getPokemonDetail(id), onSuccess, onError)
+//    }
 
-        call.enqueue(object : Callback<PokemonDetailModel> {
-            override fun onResponse(
-                call: Call<PokemonDetailModel>,
-                response: Response<PokemonDetailModel>
-            ) {
-                if (response.code() == 200) {
-                    response.body()?.let {
-                        onSuccess(it)
-                    }
-                } else {
-                    onError(response.errorBody()?.string() ?: "Error: Body vazio.")
-                }
-            }
-
-            override fun onFailure(call: Call<PokemonDetailModel>, t: Throwable) {
-                onError("Erro inesperado: ${t.message}")
-            }
-        })
+    suspend fun getPokemonDetail(id: Int): PokemonDetailModel {
+        return withContext(Dispatchers.IO) {
+            service.getPokemonDetail(id)
+        }
     }
+
 }

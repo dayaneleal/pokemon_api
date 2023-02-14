@@ -6,14 +6,18 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.pokemonapi.R
 import com.example.pokemonapi.databinding.ActivityMainBinding
 import com.example.pokemonapi.view.adapter.PokemonAdapter
+import com.example.pokemonapi.viewModel.PokemonDetailViewModel
 import com.example.pokemonapi.viewModel.PokemonViewModel
 
-class MainActivity : AppCompatActivity() {
+class PokemonActivity : AppCompatActivity() {
 
     private lateinit var viewModel: PokemonViewModel
+//    private lateinit var viewModelPokemonDetail: PokemonDetailViewModel
     private lateinit var binding: ActivityMainBinding
     private val adapter = PokemonAdapter(::onPokemonItemClick)
 
@@ -22,13 +26,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel = ViewModelProvider(this).get(PokemonViewModel::class.java)
-
+//        viewModelPokemonDetail = ViewModelProvider(this).get(PokemonDetailViewModel::class.java)
         //LayoutManager
-        binding.recyclerPokemon.layoutManager = LinearLayoutManager(this)
+        binding.recyclerPokemon.layoutManager = GridLayoutManager(this,2)
         //Adapter
         binding.recyclerPokemon.adapter = adapter
 
         viewModel.getPokemonList()
+
+//        viewModelPokemonDetail.getListPokemonDetail()
 
         observe()
     }
@@ -36,9 +42,13 @@ class MainActivity : AppCompatActivity() {
     private fun observe() {
         viewModel.listPokemonsLiveData.observe(this)
         {
-            adapter.updateList(it.results)
+            adapter.updateList(it)
             binding.progressBar.visibility = View.GONE
         }
+
+//        viewModelPokemonDetail.pokemonDetailListLiveData.observe(this){
+//            adapter.updateListPokemonWithDetails(it)
+//        }
     }
 
     private fun onPokemonItemClick(id: Int) {

@@ -9,9 +9,9 @@ import retrofit2.http.Path
 interface PokemonService {
 
     @GET("pokemon")
-    fun getPokemonList(): Call<PokemonListModel>
+    suspend fun getPokemonList(): PokemonListModel
 
-    @GET("pokexmon/{id}")
-    fun getPokemonDetail(@Path("id") id: Int): Call<PokemonDetailModel>
+    @GET("pokemon/{id}")
+    suspend fun getPokemonDetail(@Path("id") id: Int): PokemonDetailModel
 
 }

@@ -9,7 +9,7 @@
             android:id="@+id/pokemon_type"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:background="@color/grass"
+            android:background="@drawable/pokemon_type_background"
             android:paddingHorizontal="20dp"
             tools:text="grass"
             android:gravity="center"
