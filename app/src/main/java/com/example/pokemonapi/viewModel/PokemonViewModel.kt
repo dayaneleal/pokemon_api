@@ -3,6 +3,7 @@ package com.example.pokemonapi.viewModel
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
+import com.example.pokemonapi.commons.ApiStatus
 import com.example.pokemonapi.model.PokemonDetailModel
 import com.example.pokemonapi.model.PokemonListModel
 import com.example.pokemonapi.repository.PokemonRepository
@@ -16,39 +17,29 @@ class PokemonViewModel(application: Application) : AndroidViewModel(application)
     private val _listPokemonsLiveData = MutableLiveData<List<PokemonDetailModel>>()
     val listPokemonsLiveData: LiveData<List<PokemonDetailModel>> = _listPokemonsLiveData
 
+    private val _status = MutableLiveData<ApiStatus>()
+    val status: LiveData<ApiStatus> = _status
+
     fun getPokemonList() {
         viewModelScope.launch {
-//            pokemonRepository.getPokemonList(onSuccess = {
-////            _listPokemonsLiveData.value = it
-//
-//                val list = mutableListOf<PokemonDetailModel>()
-//
-//                it.results.map { item ->
-//                    val id = getPokemonID(item.url).toInt()
-//                    pokemonRepository.getPokemonDetail(id,
-//                        onSuccess = { detailModel ->
-//                            list.add(detailModel)
-//                        }, onError = {})
-//                }
-//
-//                _listPokemonsLiveData.value = list
-//
-//            }, onError = {
-//                Log.d("Debug", it)
-//            })
+            _status.value = ApiStatus.LOADING
+            try{
+                _status.value = ApiStatus.DONE
+                val result: PokemonListModel = pokemonRepository.getPokemonList()
+                val list = mutableListOf<PokemonDetailModel>()
+                result.results.map { item ->
+                    val id = getPokemonID(item.url).toInt()
 
-            val result: PokemonListModel = pokemonRepository.getPokemonList()
-            val list = mutableListOf<PokemonDetailModel>()
-            result.results.map { item ->
-                val id = getPokemonID(item.url).toInt()
-
-                val pokemonDetail: PokemonDetailModel = pokemonRepository.getPokemonDetail(id)
-                list.add(
-                    pokemonDetail
-                )
+                    val pokemonDetail: PokemonDetailModel = pokemonRepository.getPokemonDetail(id)
+                    list.add(
+                        pokemonDetail
+                    )
+                }
+                _listPokemonsLiveData.value = list
+            } catch(e: Exception) {
+                _status.value = ApiStatus.ERROR
+                _listPokemonsLiveData.value = listOf()
             }
-
-            _listPokemonsLiveData.value = list
 
         }
     }

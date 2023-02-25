@@ -15,19 +15,11 @@ class PokemonRepository(context: Context) : BaseRepository(context) {
 
     private val service = RetrofitClient.getService(PokemonService::class.java)
 
-//    fun getPokemonList(onSuccess: (PokemonListModel) -> Unit, onError: (String) -> Unit) {
-//        executeCall(service.getPokemonList(), onSuccess, onError)
-//    }
-
     suspend fun getPokemonList(): PokemonListModel {
         return withContext(Dispatchers.IO) {
             service.getPokemonList()
         }
     }
-
-//   fun getPokemonDetail(id: Int, onSuccess: (PokemonDetailModel) -> Unit, onError: (String) -> Unit) {
-//        executeCall(service.getPokemonDetail(id), onSuccess, onError)
-//    }
 
     suspend fun getPokemonDetail(id: Int): PokemonDetailModel {
         return withContext(Dispatchers.IO) {

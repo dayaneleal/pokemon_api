@@ -26,15 +26,13 @@ class PokemonActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel = ViewModelProvider(this).get(PokemonViewModel::class.java)
-//        viewModelPokemonDetail = ViewModelProvider(this).get(PokemonDetailViewModel::class.java)
+
         //LayoutManager
         binding.recyclerPokemon.layoutManager = GridLayoutManager(this,2)
         //Adapter
         binding.recyclerPokemon.adapter = adapter
 
         viewModel.getPokemonList()
-
-//        viewModelPokemonDetail.getListPokemonDetail()
 
         observe()
     }
@@ -46,9 +44,6 @@ class PokemonActivity : AppCompatActivity() {
             binding.progressBar.visibility = View.GONE
         }
 
-//        viewModelPokemonDetail.pokemonDetailListLiveData.observe(this){
-//            adapter.updateListPokemonWithDetails(it)
-//        }
     }
 
     private fun onPokemonItemClick(id: Int) {
