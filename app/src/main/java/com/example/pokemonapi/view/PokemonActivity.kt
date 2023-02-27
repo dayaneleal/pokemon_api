@@ -13,6 +13,8 @@ import com.example.pokemonapi.databinding.ActivityMainBinding
 import com.example.pokemonapi.view.adapter.PokemonAdapter
 import com.example.pokemonapi.viewModel.PokemonDetailViewModel
 import com.example.pokemonapi.viewModel.PokemonViewModel
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 
 class PokemonActivity : AppCompatActivity() {
 

@@ -9,6 +9,8 @@ import com.example.pokemonapi.commons.StringFormatter
 import com.example.pokemonapi.databinding.PokemonRowBinding
 import com.example.pokemonapi.model.PokemonDetailModel
 import com.example.pokemonapi.model.PokemonListModel
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 
 class PokemonViewHolder(private val bind: PokemonRowBinding, val onPokemonItemClick:(Int) -> Unit) :
     RecyclerView.ViewHolder(bind.root) {
@@ -24,6 +26,7 @@ class PokemonViewHolder(private val bind: PokemonRowBinding, val onPokemonItemCl
             .into(bind.pixelImg)
 
         bind.pokeCard.setOnClickListener {
+            Firebase.analytics.logEvent("log_pokemon_click: ${pokemon.id}", null)
             onPokemonItemClick(pokemon.id)
         }
 
