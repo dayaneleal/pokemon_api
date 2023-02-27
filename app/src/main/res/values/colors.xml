@@ -16,6 +16,12 @@
     <color name="eletric">#FBE523</color>
     <color name="flying">#88B3B8</color>
     <color name="other">#818181</color>
-
-
+    <color name="primaryColor">#b71c1c</color>
+    <color name="primaryLightColor">#f05545</color>
+    <color name="primaryDarkColor">#7f0000</color>
+    <color name="secondaryColor">#ffd54f</color>
+    <color name="secondaryLightColor">#ffff81</color>
+    <color name="secondaryDarkColor">#c8a415</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#000000</color>
 </resources>

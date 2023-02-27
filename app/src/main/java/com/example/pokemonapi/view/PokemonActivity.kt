@@ -28,7 +28,7 @@ class PokemonActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(PokemonViewModel::class.java)
 
         //LayoutManager
-        binding.recyclerPokemon.layoutManager = GridLayoutManager(this,2)
+        binding.recyclerPokemon.layoutManager = LinearLayoutManager(this)
         //Adapter
         binding.recyclerPokemon.adapter = adapter
 

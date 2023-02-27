@@ -2,7 +2,7 @@
     <string name="app_name">Pokédex</string>
     <string name="weight">Weight</string>
     <string name="height">Height</string>
-    <string name="page_not_found">OOPS... Algo deu errado!</string>
+    <string name="page_not_found">OOPS...Algo deu errado!</string>
     <string name="description_not_found_img">Imagem de erro 404 </string>
-    <string name="page_not_found_text">O Pokémon que você estava procurando fugiu. \n Que tal tentar novamente mais tarde?</string>
+    <string name="page_not_found_text">O Pokémon que você estava procurando fugiu.\nQue tal tentar novamente mais tarde?</string>
 </resources>

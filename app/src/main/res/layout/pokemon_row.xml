@@ -6,39 +6,40 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="10dp"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="6dp"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_poke_card_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:layout_height="110dp"
         android:background="@color/grass"
-        >
 
+        >
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:alpha="0.2"
             android:src="@drawable/pokeball"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:contentDescription="TODO"
+            android:layout_margin="5dp"
             />
 
         <TextView
             android:id="@+id/poke_number"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pixel_img"
-            android:layout_marginTop="5dp"
-            android:textSize="12sp"
             android:textColor="@color/white"
-            tools:text="#001"/>
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/poke_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingStart="10dp"
+            tools:text="#001" />
 
         <TextView
             android:id="@+id/poke_name"
@@ -51,18 +52,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/poke_number"
             android:textStyle="bold"
+            android:paddingStart="10dp"
             tools:text="Bulbasaur" />
 
         <ImageView
             android:id="@+id/pixel_img"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_gravity="end"
             android:src="@drawable/bulbasaur_pixel"
-            android:contentDescription="TODO" />
+            android:contentDescription="TODO"
+            android:layout_margin="5dp"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

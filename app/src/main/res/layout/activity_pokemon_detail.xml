@@ -142,22 +142,23 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="100dp"
-            android:src="@drawable/not_found"
+            android:src="@drawable/luxio_dream"
             android:contentDescription="@string/description_not_found_img" />
+
         <TextView
             android:id="@+id/error_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:fontFamily="sans-serif-black"
             android:text="@string/page_not_found"
-            android:textSize="20sp"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/img_error_404"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_error_404" />
         <TextView
             android:id="@+id/error_description"
             android:layout_width="wrap_content"
@@ -165,10 +166,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="@string/page_not_found_text"
-            android:textSize="15sp"
-            android:textAlignment="center"
+            android:textSize="16sp"
+            android:gravity="center"
             app:layout_constraintTop_toBottomOf="@id/error_message"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
 
             />
 
